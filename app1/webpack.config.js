@@ -1,6 +1,7 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { ModuleFederationPlugin } = require("webpack").container;
 const path = require("path");
+const {dependencies: deps} = require('./package.json');
 
 module.exports = {
   entry: "./src/index",
@@ -31,9 +32,26 @@ module.exports = {
       filename: "remoteEntry.js",
       exposes: {
         // expose each component
-        "./Header": "./src/components/Header",
+        "./App": "./src/App",
       },
-      shared: ["react", "react-dom"],
+      shared: {
+        react: {
+          requiredVersion: deps.react,
+          singleton: true,
+        },
+        "react-dom": {
+          requiredVersion: deps["react-dom"],
+          singleton: true,
+        },
+        redux: {
+          requiredVersion: deps.redux,
+          singleton: true,
+        },
+        ["react-redux"]: {
+          requiredVersion: deps["react-redux"],
+          singleton: true,
+        }
+      },
     }),
     new HtmlWebpackPlugin({
       template: "./public/index.html",
