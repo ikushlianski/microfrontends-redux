@@ -48,6 +48,14 @@ module.exports = {
         ["react-redux"]: {
           requiredVersion: deps["react-redux"],
           singleton: true,
+        },
+        ["@apollo/client"]: {
+          requiredVersion: deps["@apollo/client"],
+          singleton: true,
+        },
+        ["graphql"]: {
+          requiredVersion: deps["graphql"],
+          singleton: true,
         }
       },
 

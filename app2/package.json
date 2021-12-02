@@ -19,6 +19,8 @@
     "clean": "rm -rf dist"
   },
   "dependencies": {
+    "@apollo/client": "^3.5.5",
+    "graphql": "^16.0.1",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
     "react-redux": "^7.2.6",
